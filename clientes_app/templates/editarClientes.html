@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row"> <!--fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Clientes</h2>
+        <!--Aqui código tarjeta-->
+        <div class="card"> <!--La tarjeta -->
+            <div class="card-body">
+                <form action="/editarClientes/" method="POST"> {% csrf_token %}
+                    <div>
+                    <input type="text" id="idcliente" name="idcliente" class="form-control" value="{{losclientes.id_cliente}}" min="1" max="5" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{losclientes.nombre}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="intelefono" name="intelefono" class="form-control" value="{{losclientes.telefono}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtcorreo" name="txtcorreo" class="form-control" value="{{losclientes.correo}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtdireccion" name="txtdireccion" class="form-control" value="{{losclientes.direccion}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtcontraseña" name="txtcontraseña" class="form-control" value="{{losclientes.contraseña}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="datefecha" name="datefecha" class="form-control" value="{{losclientes.fecha_registro}}" required><br>
+                    </div>
+                    <div class="form-group py-1">
+                        <button type="submit" class="btn btn-dark">Guardar Clientes</button>
+                    </div>
+                </form>
+            </div>
+        </div> <!--La tarjeta -->
+        <!--Aqui código tarjeta-->
+    </div>
+</div> <!--fila en editar-->
+{% endblock %}
