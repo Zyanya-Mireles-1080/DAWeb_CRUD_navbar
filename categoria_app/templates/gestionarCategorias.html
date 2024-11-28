@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+{% load static%}
+<div class="row"> <!--La fila -->
+  <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"> <!--Columna izquierda -->
+    <h1>Agregar Categoria</h1>
+    <div class="card"> <!--La tarjeta -->
+      <div class="card-body">
+        <form action="registrarCategorias/" method="POST"> {% csrf_token %}
+          <div class="form-group">
+            <input type="text" id="idpedido" name="idcategoria" class="form-control" placeholder="id_categoria" minlenght="1" maxlenght="5" required><br>
+          </div>
+          <div class="form-group py-1">
+            <input type="text" id="idcliente" name="idproveedor" class="form-control" placeholder="id_proveedor" maxlenght="5" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="Nombre" min="1" max="5" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtdescripcion" name="txtdescripcion" class="form-control" placeholder="Descripción" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="intcantidad" name="intcantidad" class="form-control" placeholder="Cantidad" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtpromocion" name="txtpromocion" class="form-control" placeholder="Promoción" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtaudiencia" name="txtaudiencia" class="form-control" placeholder="Audiencia" required><br>
+          </div>
+          <div class="form-group py-1">
+            <button type="submit" class="btn btn-dark">Guardar Categoria</button>
+          </div>
+        </form>
+      </div>
+    </div> <!--La tarjeta -->
+  </div> <!--Columna izquierda -->
+
+<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"> <!--Columna derecha -->
+  <h1>Listado de Categoria</h1>
+  <img class="w-50" src="{% static 'img/categorias.png' %}" alt="Zyanya" width="300px" height="auto">
+  <!--La tabla -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">id_categoria</th>
+        <th scope="col">id_proveedor</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Promoción</th>
+        <th scope="col">Audiencia</th>
+        <th> Opciones </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in lascategorias %}
+        <tr>
+          <td>{{m.id_categoria}}</td>
+          <td>{{m.id_proveedor}}</td>
+          <td>{{m.nombre}}</td>
+          <td>{{m.descripcion}}</td>
+          <td>{{m.cantidad}}</td>
+          <td>{{m.promocion}}</td>
+          <td>{{m.audiencia}}</td>
+          <td><a href="seleccionarCategorias/{{m.id_categoria}}" class="btn btn-info">Editar</a></td> 
+          <td><a href="borrarCategorias/{{m.id_categoria}}" class="btn btn-danger">Borrar</a></td> 
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!--La tabla -->
+</div> <!--Columna derecha -->
+  
+</div> <!--La fila -->
+{% endblock %}
