@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row"> <!--fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Proveedores</h2>
+        <!--Aqui código tarjeta-->
+        <div class="card"> <!--La tarjeta -->
+            <div class="card-body">
+                <form action="/editarProveedores/" method="POST"> {% csrf_token %}
+                    <div>
+                    <input type="text" id="idproveedor" name="idproveedor" class="form-control" value="{{losproveedores.id_proveedor}}" min="1" max="5" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{losproveedores.nombre}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="intelefono" name="intelefono" class="form-control" value="{{losproveedores.telefono}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtcorreo" name="txtcorreo" class="form-control" value="{{losproveedores.correo}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtdireccion" name="txtdireccion" class="form-control" value="{{losproveedores.direccion}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtproducto" name="txtproducto" class="form-control" value="{{losproveedores.tipo_producto}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtref" name="txtref" class="form-control" value="{{losproveedores.ref_pago}}" required><br>
+                    </div>
+                    <div class="form-group py-1">
+                        <button type="submit" class="btn btn-dark">Guardar Proveedor</button>
+                    </div>
+                </form>
+            </div>
+        </div> <!--La tarjeta -->
+        <!--Aqui código tarjeta-->
+    </div>
+</div> <!--fila en editar-->
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+{% load static%}
+<div class="row"> <!--La fila -->
+  <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"> <!--Columna izquierda -->
+    <h1>Agregar Proveedor</h1>
+    <div class="card"> <!--La tarjeta -->
+      <div class="card-body">
+        <form action="registrarProveedores/" method="POST"> {% csrf_token %}
+          <div>
+          <input type="text" id="idproveedor" name="idproveedor" class="form-control" placeholder="id_proveedor" min="1" max="5" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="Nombre" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="intelefono" name="intelefono" class="form-control" placeholder="Telefono" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtcorreo" name="txtcorreo" class="form-control" placeholder="Correo" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtdireccion" name="txtdireccion" class="form-control" placeholder="Dirección" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtproducto" name="txtproducto" class="form-control" placeholder="Tipo de producto" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtref" name="txtref" class="form-control" placeholder="Referencia de Pago" required><br>
+          </div>
+          <div class="form-group py-1">
+            <button type="submit" class="btn btn-dark">Guardar Proveedor</button>
+          </div>
+        </form>
+      </div>
+    </div> <!--La tarjeta -->
+  </div> <!--Columna izquierda -->
+
+<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"> <!--Columna derecha -->
+  <h1>Listado de Proveedores</h1>
+  <img class="w-50" src="{% static 'img/proveedor.png' %}" alt="Zyanya" width="300px" height="auto">
+  <!--La tabla -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">id_proveedor</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Tipo de producto</th>
+        <th scope="col">Referencia de pago</th>
+        <th> Opciones </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in losproveedores %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{m.id_proveedor}}</td>
+          <td>{{m.nombre}}</td>
+          <td>{{m.telefono}}</td>
+          <td>{{m.correo}}</td>
+          <td>{{m.direccion}}</td>
+          <td>{{m.tipo_producto}}</td>
+          <td>{{m.ref_pago}}</td>
+          <td><a href="seleccionarProveedores/{{m.id_proveedor}}" class="btn btn-info">Editar</a></td> 
+          <td><a href="borrarProveedores/{{m.id_proveedor}}" class="btn btn-danger">Borrar</a></td> 
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!--La tabla -->
+</div> <!--Columna derecha -->
+  
+</div> <!--La fila -->
+{% endblock %}
