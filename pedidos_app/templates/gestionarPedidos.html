@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+{% load static%}
+<div class="row"> <!--La fila -->
+  <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"> <!--Columna izquierda -->
+    <h1>Agregar Pedido</h1>
+    <div class="card"> <!--La tarjeta -->
+      <div class="card-body">
+        <form action="registrarPedidos/" method="POST"> {% csrf_token %}
+          <div class="form-group">
+            <input type="text" id="idpedido" name="idpedido" class="form-control" placeholder="id_pedido" minlenght="1" maxlenght="5" required><br>
+          </div>
+          <div class="form-group py-1">
+            <input type="text" id="idcliente" name="idcliente" class="form-control" placeholder="id_cliente" maxlenght="5" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="idempleado" name="idempleado" class="form-control" placeholder="id_empleado" min="1" max="5" required><br>
+          </div>
+          <div class="form-group">
+            <input type="date" id="datefecha" name="datefecha" class="form-control" placeholder="Fecha" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="numtotal" name="numtotal" class="form-control" placeholder="Total" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtmetodopago" name="txtmetodopago" class="form-control" placeholder="Método de pago" required><br>
+          </div>
+          <div class="form-group">
+            <input type="datetime" id="datehora" name="datehora" class="form-control" placeholder="Hora" required><br>
+          </div>
+          <div class="form-group">
+            <input type="text" id="numcantidad" name="numcantidad" class="form-control" placeholder="Cantidad" required><br>
+          </div>
+          <div class="form-group py-1">
+            <button type="submit" class="btn btn-dark">Guardar Pedido</button>
+          </div>
+        </form>
+      </div>
+    </div> <!--La tarjeta -->
+  </div> <!--Columna izquierda -->
+
+<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"> <!--Columna derecha -->
+  <h1>Listado de Pedidos</h1>
+  <img class="w-50" src="{% static 'img/pedidos.png' %}" alt="Zyanya" width="300px" height="auto">
+  <!--La tabla -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">id_pedido</th>
+        <th scope="col">id_cliente</th>
+        <th scope="col">id_empleado</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Total</th>
+        <th scope="col">Metodo de pago</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Cantidad</th>
+        <th> Opciones </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in lospedidos %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{m.id_pedido}}</td>
+          <td>{{m.id_cliente}}</td>
+          <td>{{m.id_empleado}}</td>
+          <td>{{m.fecha | date:'d-m-y'}}</td>
+          <td>{{m.total}}</td>
+          <td>{{m.metodo_pago}}</td>
+          <td>{{m.horario}}</td>
+          <td>{{m.cantidad}}</td>
+          <td><a href="seleccionarPedidos/{{m.id_pedido}}" class="btn btn-info">Editar</a></td> 
+          <td><a href="borrarPedidos/{{m.id_pedido}}" class="btn btn-danger">Borrar</a></td> 
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!--La tabla -->
+</div> <!--Columna derecha -->
+  
+</div> <!--La fila -->
+{% endblock %}
