@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row"> <!--fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Empleado</h2>
+        <!--Aqui código tarjeta-->
+        <div class="card"> <!--La tarjeta -->
+            <div class="card-body">
+                <form action="/editarEmpleados/" method="POST"> {% csrf_token %}
+                    <div>
+                    <input type="text" id="idempleado" name="idempleado" class="form-control" value="{{losempleados.id_empleado}}" min="1" max="5" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{losempleados.nombre}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="intelefono" name="intelefono" class="form-control" value="{{losempleados.telefono}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtcorreo" name="txtcorreo" class="form-control" value="{{losempleados.correo}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtdireccion" name="txtdireccion" class="form-control" value="{{losempleados.direccion}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtturno" name="txtturno" class="form-control" value="{{losempleados.turno}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="intsueldo" name="intsueldo" class="form-control" value="{{losempleados.sueldo}}" required><br>
+                    </div>
+                    <div class="form-group py-1">
+                        <button type="submit" class="btn btn-dark">Guardar Empleado</button>
+                    </div>
+                </form>
+            </div>
+        </div> <!--La tarjeta -->
+        <!--Aqui código tarjeta-->
+    </div>
+</div> <!--fila en editar-->
+{% endblock %}
