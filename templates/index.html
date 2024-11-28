@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load static%}
+
+{% block titulo %} <titulo>Zyanya´s Clothes</title>{%endblock%}
+
+    {% block cuerpo%}
+    <div class=" d flex flex-column justify-content-center align-items-center">
+        <h1 class="mt-4 mb-4">Mi tienda de ropa Zyanya´s Clothes</h1>
+        <img class="w-50" src="{% static 'img/clothes.png' %}" alt="Zyanya" width="400" height="auto">
+    </div>
+
+    {% endblock cuerpo %}
