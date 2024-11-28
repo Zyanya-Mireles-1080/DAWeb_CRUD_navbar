@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row"> <!--fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Productos</h2>
+        <!--Aqui código tarjeta-->
+        <div class="card"> <!--La tarjeta -->
+            <div class="card-body">
+                <form action="/editarProductos/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="idproducto" name="idproducto" class="form-control" value="{{losproductos.id_producto}}" minlenght="1" maxlenght="5" required><br>
+                    </div>
+                    <div class="form-group py-1">
+                        <input type="text" id="idcategoria" name="idcategoria" class="form-control" value="{{losproductos.id_categoria}}" maxlenght="5" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="idproveedor" name="idproveedor" class="form-control" value="{{losproductos.id_proveedor}}" min="1" max="5" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{losproductos.nombre}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="floatprecio" name="floatprecio" class="form-control" value="{{losproductos.precio}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtalla" name="txtalla" class="form-control" value="{{losproductos.talla}}" required><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtcolor" name="txtcolor" class="form-control" value="{{losproductos.color}}" required><br>
+                    </div>
+                    <div class="form-group py-1">
+                        <button type="submit" class="btn btn-dark">Guardar Productos</button>
+                    </div>
+                </form>
+            </div>
+        </div> <!--La tarjeta -->
+        <!--Aqui código tarjeta-->
+    </div>
+</div> <!--fila en editar-->
+{% endblock %}
